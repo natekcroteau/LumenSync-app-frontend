@@ -40,7 +40,7 @@ Backend Directory Setup:
 ```
 npm install
 ```
-### initiate and connect a postgreSQL database, updating knexfile.js with credentials
+-initiate and connect a PostgreSQL database, updating knexfile.js with credentials
 
 
 
