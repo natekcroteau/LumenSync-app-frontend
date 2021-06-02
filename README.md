@@ -1,70 +1,92 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# LumenSync
+> Automate and Control Your Hue Lightbulbs
 
-## Available Scripts
 
-In the project directory, you can run:
+## General Info
+LumenSync is a minimalistic Phillips Hue lightbulb control and scheduling application built with a React frontend, Node/Express backend, and PostgreSQL database.
 
-### `yarn start`
+## Demo Video
+[LumenSync on YouTube](https://youtu.be/Igzv4thhg1c)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* Node - v 15.13.0
+  * Express
+  * KNEX
+  * cors
+  * jsonwebtoken
+  * bcrypt
 
-### `yarn test`
+* React - v 17.0.2
+  * React Router
+  * Material UI
+  * Spacetime
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* HTML
+* CSS
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Setup
+To utilize LumenSync, install frontend and backend directories locally using the following commands:
+```
+git clone git@github.com:natekcroteau/LumenSync-app-frontend.git
+git clone git@github.com:natekcroteau/LumenSync-app-backend.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Frontend Directory Setup:
+```
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Backend Directory Setup:
+```
+npm install
+```
+-initiate and connect a PostgreSQL database, updating knexfile.js with credentials
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Start the backend and frontend server with the following command in each directory:
+```
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Code Example
+```
+const submitForm = (event) => {
+    setSubmitted(true)
+    event.preventDefault()
+    const convertedBri = Math.trunc(prepareBri())
+    const convertedCT = Math.trunc(prepareCT())
+    fetch(`https://${hueAddress}/api/${hueUsername}/schedules`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "name": nameInput,
+            "command": {
+                "address": `/api/${hueUsername}/groups/${lightGroup}/action`,
+                "method": "PUT",
+                "body": {"on": onOff, "bri": `${convertedBri}`, "ct": `${convertedCT}`}
+            },
+            "localtime": `${prepareDateTime()}`,
+            "autodelete": false
+        })
+    })
+}
+```
 
-## Learn More
+## Features
+* Create new users and sign-in with authentication.
+* The user must connect to their Hue Bridge, utilizing the setup feature found under the Account tab.
+  * Hue Bridge connection information is stored with user information.
+* The user can turn on/off each Phillips Hue lightbulb that is registered to their Hue Bridge under the Control tab.
+* The user can view existing light schedules and create new light schedules. 
+  * Creating a new light schedule allows the selection of a light-group, the time of day for the action, ON or OFF action, and the brightness and color temperature. 
+* The user is able to remove authentication by logging out
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact
+Created by [Nate Croteau](https://github.com/natekcroteau)
