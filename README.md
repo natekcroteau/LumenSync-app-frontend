@@ -4,7 +4,7 @@
 
 
 ## General Info
-LumenSync is a minimalistic Phillips Hue control/scheduling application built with a React frontend, Node/Express backend, and PostgreSQL database.
+LumenSync is a minimalistic Phillips Hue lightbulb control and scheduling application built with a React frontend, Node/Express backend, and PostgreSQL database.
 
 ## Demo Video
 [LumenSync on YouTube](https://youtu.be/Igzv4thhg1c)
@@ -25,7 +25,7 @@ LumenSync is a minimalistic Phillips Hue control/scheduling application built wi
 
 
 ## Setup
-To utilize LumenSync, install locally using the following commands:
+To utilize LumenSync, install frontend and backend directories locally using the following commands:
 ```
 git clone git@github.com:natekcroteau/LumenSync-app-frontend.git
 git clone git@github.com:natekcroteau/LumenSync-app-backend.git
@@ -40,11 +40,11 @@ Backend Directory Setup:
 ```
 npm install
 ```
--initiate and connect postgreSQL database, updating knexfile.js
+-initiate and connect a postgreSQL database, updating knexfile.js with credentials
 
 
 
-Start the backend, then frontend server with the following command in the respective directory:
+Start the backend and frontend server with the following command in each directory:
 ```
 npm start
 ```
@@ -77,22 +77,13 @@ const submitForm = (event) => {
 ```
 
 ## Features
-* Create users and sign-in with authentication
-* User must connect Hue Bridge 
-
+* Create new users and sign-in with authentication.
+* The user must connect to their Hue Bridge, utilizing the setup feature found under the Account tab.
+  * Hue Bridge connection information is stored with user information.
+* The user can turn on/off each Phillips Hue lightbulb that is registered to their Hue Bridge under the Control tab.
+* The user can view existing light schedules and create new light schedules. 
+  * Creating a new light schedule allows the selection of a light-group, the time of day for the action, ON or OFF action, and the brightness and color temperature. 
 * The user is able to remove authentication by logging out
-
-
-
-
-
-## Status
-Project functions as intended for a local user
-
-
-## Inspiration
-
-
 
 ## Contact
 Created by [Nate Croteau](https://github.com/natekcroteau)
