@@ -21,7 +21,7 @@ export default function CurrentScheduleCard(props) {
 
 
     const deleteSchedule = (schedule) => {
-        fetch(`https://${hueAddress}/api/${hueUsername}/schedules/${schedule}`, { method: 'DELETE' })
+        fetch(`http://${hueAddress}/api/${hueUsername}/schedules/${schedule}`, { method: 'DELETE' })
         .then(fetchSchedules)
     }
 

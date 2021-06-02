@@ -14,7 +14,7 @@ export default function Schedule(props) {
 
 
     const fetchSchedulestoState = () => {
-        fetch(`https://${hueAddress}/api/${hueUsername}/schedules`, { method: 'GET' })
+        fetch(`http://${hueAddress}/api/${hueUsername}/schedules`, { method: 'GET' })
         .then(response => response.json())
         .then(schedules => setEverySchedule(Object.entries(schedules)))
     }

@@ -26,7 +26,7 @@ export default function HueBridgeSetup(props) {
     }
 
     const storeBridgeInfo = (hueAddress, hueUsername) => {
-        fetch('https://lumensync.herokuapp.com/establishBridge', {
+        fetch('http://localhost:3001/establishBridge', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"

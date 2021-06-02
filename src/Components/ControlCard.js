@@ -18,7 +18,7 @@ export default function ControlCard(props) {
 
     
     const turnLightOn = (light) => {
-        fetch(`https://${hueAddress}/api/${hueUsername}/lights/${light}/state`, {
+        fetch(`http://${hueAddress}/api/${hueUsername}/lights/${light}/state`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ export default function ControlCard(props) {
 
 
     const turnLightOff = (light) => {
-        fetch(`https://${hueAddress}/api/${hueUsername}/lights/${light}/state`, {
+        fetch(`http://${hueAddress}/api/${hueUsername}/lights/${light}/state`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

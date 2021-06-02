@@ -12,7 +12,7 @@ export default function Control(props) {
 
 
     const fetchLightstoState = () => {
-        fetch(`https://${hueAddress}/api/${hueUsername}/lights`, { method: 'GET' })
+        fetch(`http://${hueAddress}/api/${hueUsername}/lights`, { method: 'GET' })
         .then(response => response.json())
         .then(lights => {
             setEveryLight(Object.entries(lights))

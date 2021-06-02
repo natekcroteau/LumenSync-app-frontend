@@ -141,7 +141,7 @@ export default function PostToSchedule(props) {
         event.preventDefault()
         const convertedBri = Math.trunc(prepareBri())
         const convertedCT = Math.trunc(prepareCT())
-        fetch(`https://${hueAddress}/api/${hueUsername}/schedules`, {
+        fetch(`http://${hueAddress}/api/${hueUsername}/schedules`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -162,7 +162,7 @@ export default function PostToSchedule(props) {
 
     useEffect(() => {
         const fetchLightGroupsToState = () => {
-            fetch(`https://${hueAddress}/api/${hueUsername}/groups`, { method: 'GET' })
+            fetch(`http://${hueAddress}/api/${hueUsername}/groups`, { method: 'GET' })
             .then(response => response.json())
             .then(groups => setAvailableGroups(Object.entries(groups)))
         }

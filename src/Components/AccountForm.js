@@ -24,7 +24,7 @@ export default function AccountForm(props) {
 
     const signUpUser = () => {
         setSubmitted(true)
-        fetch('https://lumensync.herokuapp.com/users', { 
+        fetch('http://localhost:3001/users', { 
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -35,7 +35,7 @@ export default function AccountForm(props) {
 
 
     const logInUser = () => {
-        fetch('https://lumensync.herokuapp.com/login', {
+        fetch('http://localhost:3001/login', {
             method: 'POST',
             headers: {
                 "Content-Type" : "application/json"

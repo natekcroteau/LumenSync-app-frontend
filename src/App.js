@@ -31,7 +31,7 @@ export default function App() {
         if(!user){
             return null
         }else{
-            fetch('https://lumensync.herokuapp.com/user', {
+            fetch('http://localhost:3001/user', {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -45,7 +45,7 @@ export default function App() {
             })
         }
     }
-    
+
 
     const userReady = () => {
         if( !hueAddress || !hueUsername ){
